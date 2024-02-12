@@ -1,0 +1,3 @@
+﻿using ConsoleMenu;
+
+Menu.Run();
