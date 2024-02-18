@@ -1,19 +1,20 @@
-﻿using System;
+﻿using ConsoleMenu.UI.Util;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleMenu
+namespace ConsoleMenu.UI
 {
     public static class Menu
     {
         public static string[] options = new string[]
         {
-            "Initialize",
-            "Set Environment & Service Provider Configurations",
-            "Single Call",
-            "Batch Call & Export",
+            "Display Configuration",
+            "File Explorer",
+            "Option 3",
+            "Option 4",
             "Exit"
         };
 
@@ -25,39 +26,40 @@ namespace ConsoleMenu
             {
                 case 0:
                     Console.Clear();
-                    Menu.Run();
+                    Run();
                     break;
-                case 1: 
-                    _Initializie();
+                case 1:
+                    _ViewDefaultConfigs();
                     break;
                 case 2:
-                    _Initializie();
+                    _FileExplorer();
                     break;
                 case 3:
-                    _Initializie();
+                    _ViewDefaultConfigs();
                     break;
                 case 4:
-                    _Initializie();
+                    _ViewDefaultConfigs();
                     break;
-                case 5: 
+                case 5:
                     Console.Clear();
-                    Menu.Run();
+                    Run();
                     break;
                 default:
                     break;
             }
         }
 
-        private static void _Initializie()
+        private static void _FileExplorer()
         {
             Console.Clear();
-            //Tasks.Initialize();
-            //DisplayLogPage.Run(Menu.Run);
+            string selectedFilePath = " ";
+            FileExporer.Run(out selectedFilePath, Run, Run);
         }
 
         private static void _ViewDefaultConfigs()
         {
             Console.Clear();
+            DisplayPage.Run(Run, IO.ReadYAMLtoString("", "config.yaml"));
         }
 
 

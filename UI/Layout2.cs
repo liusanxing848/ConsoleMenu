@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleMenu
+namespace ConsoleMenu.UI
 {
     //for two colomns display, still needs work
     internal class Layout2
@@ -31,7 +31,7 @@ namespace ConsoleMenu
 
         public void CenterMenuToConsole()
         {
-            _drawMenuColumnPos = GetConsoleWindowWidth() / 2 - (_menuMaximumWidth / 2);
+            _drawMenuColumnPos = GetConsoleWindowWidth() / 2 - _menuMaximumWidth / 2;
         }
 
         public void ModifyMenuCentered()
@@ -125,8 +125,8 @@ namespace ConsoleMenu
             Console.WriteLine(_prompt);
             for (int i = 0; i < _options.Length; i++)
             {
-                int row = _drawMenuRowPos + (i / _columns);
-                int colOffset = (i % _columns) * (_menuMaximumWidth / _columns);
+                int row = _drawMenuRowPos + i / _columns;
+                int colOffset = i % _columns * (_menuMaximumWidth / _columns);
                 SetCursorPosition(row, _drawMenuColumnPos + colOffset);
 
                 if (i == _currentSelection)

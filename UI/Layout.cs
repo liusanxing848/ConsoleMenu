@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleMenu
+namespace ConsoleMenu.UI
 {
     internal class Layout
     {
@@ -29,7 +29,7 @@ namespace ConsoleMenu
 
         public void CenterMenuToConsole()
         {
-            _drawMenuColumnPos = GetConsoleWindowWidth() / 2 - (_menuMaximumWidth / 2);
+            _drawMenuColumnPos = GetConsoleWindowWidth() / 2 - _menuMaximumWidth / 2;
         }
 
         // Modify the menu to be left justified
@@ -169,12 +169,12 @@ namespace ConsoleMenu
                 if (keyPressed == ConsoleKey.UpArrow)
                 {
                     // Convert to 0-based, decrement, ensure positive, modulo by count, convert back to 1-based
-                    _currentSelection = ((_currentSelection - 1 - 1 + _options.Length) % _options.Length) + 1;
+                    _currentSelection = (_currentSelection - 1 - 1 + _options.Length) % _options.Length + 1;
                 }
                 else if (keyPressed == ConsoleKey.DownArrow)
                 {
                     // Convert to 0-based, increment, modulo by count, convert back to 1-based
-                    _currentSelection = ((_currentSelection - 1 + 1) % _options.Length) + 1;
+                    _currentSelection = (_currentSelection - 1 + 1) % _options.Length + 1;
                 }
                 else if (keyPressed == ConsoleKey.Enter)
                 {
